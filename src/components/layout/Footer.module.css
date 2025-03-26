@@ -1,0 +1,149 @@
+:root {
+    --Black: #494545;
+    --babyBlue: #bfcdff;
+    --purple: rgb(155, 118, 202);
+    --pink: #f2beff;
+}
+
+.container1 {
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer {
+    background-color: rgb(241, 240, 240);
+    padding: 70px 0;
+}
+
+.collumf {
+    width: 25%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.collumf h4 {
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+    color: var(--Black);
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    font-weight: 500;
+    position: relative;
+}
+
+.collumf h4::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: var(--purple);
+    height: 2px;
+    width: 50px;
+}
+
+.collumf ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.collumf ul li a {
+    font-size: 17px;
+    text-transform: capitalize;
+    color: var(--Black);
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.collumf ul li a:hover,
+.collumf ul li a:focus {
+    color: var(--purple);
+    padding-left: 8px;
+}
+
+.collumf .social-link a,
+.collumf .app-link a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: var(--purple);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.collumf .social-link a:hover,
+.collumf .social-link a:focus,
+.collumf .app-link a:hover,
+.collumf .app-link a:focus {
+    background-color: var(--babyBlue);
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgb(241, 240, 240);
+    margin-top: 60px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--Black);
+}
+
+.footer-bottom span {
+    color: var(--purple);
+}
+
+.footer-bottom img {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .collumf {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .collumf {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-bottom p {
+        font-size: 14px;
+    }
+
+    .collumf .social-link a,
+    .collumf .app-link a {
+        height: 35px;
+        width: 35px;
+        font-size: 18px;
+        line-height: 35px;
+    }
+}

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(245, 245, 243);
+    overflow-x: hidden;
+    margin: 0;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px; /* Reduzi o padding superior */
+    flex-wrap: wrap;
+    margin-top: 20px; /* Reduzi a margem superior significativamente */
+    background-color: rgb(236, 232, 232);
+}
+
+.text-container {
+    max-width: 50%;
+    text-align: left;
+    margin-right: 30px; /* Aumentei o espaço entre texto e imagem */
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700; /* Peso da fonte mais forte */
+    font-size: 56px; /* Aumentei o tamanho da fonte */
+    margin: 10px 0;
+    margin-left: 10px;
+    line-height: 1.2; /* Melhor espaçamento entre linhas */
+}
+
+.highlight {
+    color: var(--purple);
+}
+
+.p {
+    font-family: 'Arial', sans-serif;
+    margin-left: 10px;
+    font-size: 20px; /* Aumentei o tamanho da fonte */
+    color: #444; /* Cor do texto um pouco mais escura */
+    margin-bottom: 30px; /* Aumentei a margem inferior */
+    width: 100%;
+    line-height: 1.7; /* Melhor espaçamento entre linhas */
+    margin-top: 25px;
+}
+
+.bt_default {
+    background-color: var(--purple);
+    color: white;
+    padding: 15px 30px; /* Aumentei o padding do botão */
+    border: none;
+    border-radius: 20px; /* Bordas mais arredondadas */
+    font-size: 18px; /* Aumentei o tamanho da fonte */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Adicionei transição para transformação */
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.bt_default:hover {
+    background-color: var(--babyBlue);
+    transform: translateY(-3px); /* Leve elevação no hover */
+}
+
+.img1 {
+    width: 100%;
+    max-width: 650px; /* Ajustei o tamanho máximo da imagem */
+    height: auto;
+    margin-top: 20px;
+    margin-right: 30px; /* Reduzi a margem direita */
+}
+@media (max-width: 768px) {
+    .body {
+        flex-direction: column; /* Mantém a direção da coluna */
+        align-items: center;
+        padding: 30px 15px;
+    }
+
+    .text-container {
+        max-width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .img1 {
+        margin-top: 20px;
+        max-width: 90%; /* Ajuste a largura da imagem */
+    }
+
+    /* Adicione um container para o texto e botão */
+    .text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza o texto e o botão */
+    }
+
+    .bt_default {
+        margin-top: 20px; /* Adiciona espaço entre o texto e o botão */
+    }
+}

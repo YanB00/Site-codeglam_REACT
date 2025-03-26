@@ -1,0 +1,54 @@
+
+.body3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse; /* Inverte a ordem dos elementos */
+  padding: 50px;
+  background-color: #f7f7f7;
+}
+  
+  .hairdresserImage {
+    max-width: 45%;
+    height: auto;
+  }
+  
+  .textContent {
+    max-width: 50%;
+    text-align: left;
+  }
+  
+  .textContent h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .textContent p {
+    font-size: 1.125rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .textContent .highlight {
+    color: #812da6;
+    font-weight: bold;
+  }
+  
+  /* Responsividade para dispositivos móveis */
+  @media (max-width: 768px) {
+    .body3 {
+      flex-direction: column;
+      text-align: center;
+      padding: 30px 15px;
+    }
+  
+    .hairdresserImage {
+      max-width: 80%;
+      margin-bottom: 20px;
+    }
+  
+    .textContent {
+      max-width: 90%;
+    }
+  }
+  
