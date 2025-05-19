@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import style from './Login.module.css';
-import { Link, useNavigate } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom'; 
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState(false);
+  const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
@@ -24,6 +24,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorMessage('');
+    console.log("Enviando:", {email, senha: password});
   
     try {
       const response = await fetch('http://localhost:3000/login', {
@@ -38,12 +39,10 @@ const Login = () => {
       const data = await response.json();
   
       if (response.ok) {
-        // sucesso
         console.log("Login bem-sucedido:", data);
         localStorage.setItem('user', JSON.stringify(data.data));
-        navigate('/');
+        window.location.href = `http://localhost:5174/?userId=${data.data._id}`
       } else {
-        // falha
         console.error("Erro no login:", data);
         setErrorMessage(data.mensageStatus || "Erro ao realizar login");
       }
@@ -54,12 +53,16 @@ const Login = () => {
   };
 
   return (
-    <div className={style['login-page']}> {/* Novo contêiner */}
+    <div className={style['login-page']}> 
       <main className={style['login-container']}>
         <div className={style['form-section']}>
-          <form>
+          <form  onSubmit={handleSubmit}>
             <h1>Login</h1>
-            <input type="email" placeholder="Email" required /> {/* Changed type to "email" */}
+            <input type="email" 
+            placeholder="Email" required 
+            value={email}
+            onChange={handleEmailChange}
+            /> 
 
             <div className={style['password-container']}>
               <input
@@ -68,6 +71,8 @@ const Login = () => {
                 placeholder="Senha (pelo menos 10 caracteres)"
                 minLength="10"
                 required
+                value={password}
+                onChange={handlePasswordChange}
               />
               <span
                 id="eyeicon"
