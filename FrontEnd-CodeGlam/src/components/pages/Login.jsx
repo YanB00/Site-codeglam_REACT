@@ -41,7 +41,7 @@ const Login = () => {
       if (response.ok) {
         console.log("Login bem-sucedido:", data);
         localStorage.setItem('user', JSON.stringify(data.data));
-        window.location.href = `http://localhost:5174/?userId=${data.data._id}`
+        window.location.href = `http://localhost:5174/usuario/${data.data._id}`;
       } else {
         console.error("Erro no login:", data);
         setErrorMessage(data.mensageStatus || "Erro ao realizar login");

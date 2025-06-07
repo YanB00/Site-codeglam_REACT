@@ -1,0 +1,143 @@
+:root {
+  --Black: #000000;
+  --babyBlue: #bfcdff;
+  --purple: rgb(155, 118, 202);
+  --pink: #f2beff;
+}
+
+.container {
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.textSection {
+  text-align: left;
+  margin-bottom: 40px;
+  width: 90%;
+  max-width: 900px;
+}
+
+.titulo {
+  font-size: 2.8em;
+  color: var(--Black);
+  font-weight: bold;
+}
+
+.titulo span {
+  color: var(--purple);
+}
+
+.subtitulo {
+  color: #444;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 90%;
+  max-width: 1200px;
+  flex-wrap: wrap; /* Ajuda no mobile */
+}
+
+.planosGrid {
+  flex: 1 1 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.planoCard {
+  background-color: rgb(245, 245, 245);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.planoCard:hover {
+  transform: translateY(-5px);
+}
+
+.planoNome {
+  font-size: 1.8em;
+  color: var(--Black);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.planoPreco {
+  font-size: 1.6em;
+  color: var(--purple);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.planoDescricao {
+  color: #333;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.planoRecursos {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.planoRecursos li {
+  margin-bottom: 10px;
+  padding-left: 1em;
+  position: relative;
+  color: #222;
+}
+
+.planoRecursos li::before {
+  content: "✔";
+  color: var(--purple);
+  position: absolute;
+  left: 0;
+}
+
+
+
+.planoCta {
+  background-color: var(--pink);
+  color: var(--Black);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.planoCta:hover {
+  background-color: var(--purple);
+  color: white;
+}
+
+.imageSection {
+  flex: 0 1 380px;
+  background-color: var(--purple);
+  border-radius: 60px 0 0 60px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profissionalImagem {
+  width: 100%;
+  height: auto;
+  border-radius: 40px;
+}
