@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./Register.module.css";
 import 'font-awesome/css/font-awesome.min.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"; 
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +20,7 @@ const Register = () => {
   const [popupMessage, setPopupMessage] = useState("");
   const [isSuccessPopup, setIsSuccessPopup] = useState(false);
   const [formKey, setFormKey] = useState(Date.now());
+  const [agreedToTerms, setAgreedToTerms] = useState(false); 
 
   function handlerChangeRegister(event){
     setRegister({...register, [event.target.name] : event.target.value});
@@ -26,8 +29,16 @@ const Register = () => {
 
   async function submit(event) {
     event.preventDefault();
-    
-    const telefoneCompleto = register.ddd+register.phone;
+
+    if (!agreedToTerms) {
+      setRegistrationStatus({ success: false, message: 'Você deve aceitar os Termos de Uso e a Política de Privacidade para se registrar.' });
+      setPopupMessage('Você deve aceitar os Termos de Uso e a Política de Privacidade para se registrar.');
+      setIsSuccessPopup(false);
+      setShowPopup(true);
+      return; 
+    }
+
+    const telefoneCompleto = register.ddd + register.phone;
 
     const dataToSend ={
       nome: register.nome,
@@ -56,9 +67,7 @@ const Register = () => {
         setIsSuccessPopup(true);
         setShowPopup(true);
 
-
-         // Limpar os campos do formulário
-         setRegister({
+        setRegister({
           nome: '',
           empresa: '',
           email: '',
@@ -66,11 +75,12 @@ const Register = () => {
           ddd: '',
           phone: ''
         });
+        setAgreedToTerms(false); 
         console.log("Pós sucesso:", register)
         setFormKey(Date.now())
       } else {
-        setRegistrationStatus({ success: false, message: 'Erro de conexão', error: data.errorObject });
-        setPopupMessage('Erro ao registrar!');
+        setRegistrationStatus({ success: false, message: data.mensageStatus || 'Erro de conexão' , error: data.errorObject }); // Use data.mensageStatus aqui também para erros
+        setPopupMessage(data.mensageStatus || 'Erro ao registrar!'); 
         setIsSuccessPopup(false);
         setShowPopup(true);
       }
@@ -97,10 +107,11 @@ const Register = () => {
         ddd: '',
         phone: ''
       });
+      setAgreedToTerms(false); 
     }
-      setRegistrationStatus(null);
-    }
-  
+    setRegistrationStatus(null);
+  }
+
   useEffect(()=>{
     console.log("Estado Registro:", register);
     }, [register]);
@@ -109,7 +120,7 @@ const Register = () => {
     <div className={style["register-page"]}>
       <main className={style["register-container"]}>
         <div className={style["form-section"]}>
-          <form onSubmit={submit} key={formKey}> 
+          <form onSubmit={submit} key={formKey}>
             <h1>Registrar-se</h1>
 
             <label htmlFor="nome">Nome completo</label>
@@ -126,7 +137,7 @@ const Register = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                name="senha" 
+                name="senha"
                 placeholder="Senha (pelo menos 10 caracteres)"
                 minLength="10"
                 required
@@ -138,7 +149,7 @@ const Register = () => {
                 className={style["eye-icon"]}
                 onClick={togglePasswordVisibility}
               >
-                <i className={`fa fa-eye${showPassword ? "-slash" : ""}`} />
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
               </span>
             </div>
 
@@ -148,15 +159,25 @@ const Register = () => {
               <input type="number" id="phone" name="phone" placeholder="Digite seu telefone" required  onChange={handlerChangeRegister} value={register.phone} />
             </div>
 
+            <div className={style["terms-checkbox-container"]}>
+              <input
+                type="checkbox"
+                id="agreedToTerms"
+                name="agreedToTerms"
+                checked={agreedToTerms}
+                onChange={(e) => setAgreedToTerms(e.target.checked)}
+                required
+              />
+              <label htmlFor="agreedToTerms">
+                Eu li e concordo com os{" "}
+                <Link to="/terms-of-use" className={style["link-text"]}>Termos de Uso</Link>
+                {" "}e a{" "}
+                <Link to="/privacy-policy" className={style["link-text"]}>Política de Privacidade</Link>.
+              </label>
+            </div>
+
             <button type="submit">Registrar-se</button>
 
-        
-      
-
-            <p>
-              Ao clicar em <strong>"Registrar-se"</strong>, você confirma que leu e concorda com os
-              <a href="#" target="_blank"> Termos de Uso</a> e a <a href="#" target="_blank">Política de Privacidade</a>.
-            </p>
 
             <Link to="/login" className={style["login-link"]}>
               Já tem uma conta? <span>Entre aqui</span>
@@ -165,19 +186,19 @@ const Register = () => {
         </div>
       </main>
 
- {/* Simple Pop-up */}
- {showPopup && (
-        <div className={style["popup-overlay"]}>
-          <div className={`${style["popup-content"]} ${isSuccessPopup ? style["popup-success"] : style["popup-error"]}`}>
-            <p>{popupMessage}</p>
-            <button onClick={closePopup}>OK</button>
-            {!isSuccessPopup && registrationStatus?.error && (
-              <pre>{JSON.stringify(registrationStatus.error, null, 2)}</pre>
-            )}
-          </div>
+    {/* Simple Pop-up */}
+    {showPopup && (
+      <div className={style["popup-overlay"]}>
+        <div className={`${style["popup-content"]} ${isSuccessPopup ? style["popup-success"] : style["popup-error"]}`}>
+          <p>{popupMessage}</p>
+          <button onClick={closePopup}>OK</button>
+          {!isSuccessPopup && registrationStatus?.error && (
+            <pre>{JSON.stringify(registrationStatus.error, null, 2)}</pre>
+          )}
+        </div>
       </div>
- )}
- </div>
+    )}
+    </div>
   );
 };
 

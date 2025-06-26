@@ -1,0 +1,75 @@
+/* src/components/pages/PrivacyPolicy.module.css */
+
+.privacy-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px; /* Padding para as bordas da tela */
+  box-sizing: border-box;
+  flex-grow: 1; /* Permite que ocupe o espaço entre Header e Footer */
+}
+
+.privacy-container {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px; /* Largura máxima para o texto */
+  margin: 20px auto; /* Margem e centralização */
+}
+
+.privacy-content h1 {
+  font-size: 2.5em;
+  color: rgb(155, 118, 202); /* Sua cor roxa */
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: 'Oswald', sans-serif; /* Ou sua fonte de título */
+}
+
+.privacy-content p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.privacy-content p strong {
+  color: #000;
+  font-size: 1.1em;
+}
+
+.privacy-content a {
+  color: rgb(155, 118, 202);
+  text-decoration: none;
+}
+
+.privacy-content a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para listas (ul/ol) se quiser um espaçamento específico */
+.privacy-content ul {
+    margin-bottom: 15px;
+    padding-left: 25px;
+}
+
+.privacy-content ul li {
+    margin-bottom: 5px;
+    line-height: 1.5;
+    color: #555;
+}
+
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+  .privacy-container {
+    padding: 20px;
+    max-width: 95%;
+  }
+  .privacy-content h1 {
+    font-size: 2em;
+  }
+  .privacy-content p {
+    font-size: 0.9em;
+  }
+}

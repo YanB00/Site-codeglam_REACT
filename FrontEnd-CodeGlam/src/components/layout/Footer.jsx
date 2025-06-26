@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // <<<<< IMPORTAR Link
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faInstagram, faTwitter, faLinkedinIn, faGooglePlay, faApple } from "@fortawesome/free-brands-svg-icons"; // Importando os ícones
+import { faFacebook, faInstagram, faTwitter, faLinkedinIn, faGooglePlay, faApple } from "@fortawesome/free-brands-svg-icons";
 import style from './Footer.module.css';
 
 const Footer = () => (
@@ -11,17 +12,17 @@ const Footer = () => (
           <h4>Empresa</h4>
           <ul>
             <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Nossos Serviços</a></li>
-            <li><a href="#">Política de privacidade</a></li>
-            <li><a href="#">Termos de serviço</a></li>
-            <li><a href="#">Junte-se a nós</a></li>
+            <li><a href="#">Nossos Serviços</a></li> 
+            <li><Link to="/privacy-policy">Política de privacidade</Link></li> 
+            <li><Link to="/terms-of-use">Termos de serviço</Link></li> 
+            <li><a href="#">Junte-se a nós</a></li> 
           </ul>
         </div>
         <div className={style.collumf}>
           <h4>Ajuda</h4>
           <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Métodos de pagamento</a></li>
+            <li><a href="#">FAQ</a></li> 
+            <li><a href="#">Métodos de pagamento</a></li> 
           </ul>
         </div>
         <div className={style.collumf}>
