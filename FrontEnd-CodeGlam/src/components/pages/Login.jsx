@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -23,6 +23,8 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("handleSubmit foi chamado! Tentando login..."); 
+
     setErrorMessage('');
     console.log("Enviando:", {email, senha: password});
   
@@ -40,8 +42,20 @@ const Login = () => {
   
       if (response.ok) {
         console.log("Login bem-sucedido:", data);
-        localStorage.setItem('user', JSON.stringify(data.data));
-        window.location.href = `http://localhost:5174/usuario/${data.data._id}`;
+        
+        if (data.data && data.data._id) {
+            const salaoId = data.data._id;
+            localStorage.setItem('idDoSalaoLogado_from_5173', salaoId); 
+            console.log('ID do Salão salvo no localStorage do 5173 (apenas para debug):', salaoId);
+
+            const targetUrl = `http://localhost:5175/usuario/${salaoId}`;
+            console.log(`Redirecionando para: ${targetUrl}`);
+            window.location.href = targetUrl; 
+
+        } else {
+            console.warn('ID do Salão NÃO encontrado nos dados de resposta do login.');
+        }
+
       } else {
         console.error("Erro no login:", data);
         setErrorMessage(data.mensageStatus || "Erro ao realizar login");
