@@ -62,9 +62,9 @@ const Header = () => {
       {/* MENU MOBILE */}
       <div id={style.mobi_menu} className={isMenuOpen ? style.active : ''}>
         <ul className={style['nav_list']}>
-      <li class="nav_item"><a href="#planos">Planos</a></li>
-      <li class="nav_item"><a href="#sobre">Quem Somos</a></li>
-      <li class="nav_item"><a href="#contato">Contato</a></li>
+      <li className="nav_item"><a href="#planos">Planos</a></li>
+      <li className="nav_item"><a href="#sobre">Quem Somos</a></li>
+      <li className="nav_item"><a href="#contato">Contato</a></li>
         </ul>
 
         <Link to="/login">

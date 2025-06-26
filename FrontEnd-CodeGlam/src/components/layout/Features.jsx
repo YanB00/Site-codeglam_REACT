@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressBook, faMoneyCheck, faCogs } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Features.module.css"; // Se estiver usando CSS Modules
+import styles from "./Features.module.css"; 
 
 const Features = () => (
   <div className={styles.body2}>

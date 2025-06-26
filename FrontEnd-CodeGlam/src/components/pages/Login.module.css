@@ -1,175 +1,165 @@
-
 :root {
-    --Black: #000000;
-    --babyBlue: #bfcdff;
-    --purple: rgb(155, 118, 202);
-    --pink: #f2beff;
+  --Black: #000000;
+  --babyBlue: #bfcdff;
+  --purple: rgb(155, 118, 202);
+  --pink: #f2beff;
 }
 
-
-
-
-
-*{
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.login-page{
-    background-image: url('./img/Untitled\ design.png');
-    overflow-x: hidden; /* Evita barra de rolagem horizontal */
-    margin: 0; /* Remove margem padrão */
-    background-size: cover;
-    
+/* REMOVIDO: .login-page background-image e overflow-x: hidden
+   Esses estilos devem ser gerenciados pelo MainLayout ou globalmente (ex: no index.css/main.css para o body/html)
+*/
+.login-page {
+  /* Não precisa de background-image aqui se o MainLayout cuida do fundo da página */
+  /* Remove overflow-x: hidden; */
+  /* Remove height: 100vh; se estava aqui */
+  display: flex; /* Mantém o flex para centralizar o container */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente (dentro do espaço disponível para a página) */
+  /* Adicionar um padding para evitar que o conteúdo fique colado nas bordas da tela */
+  padding: 20px; /* Adapte conforme necessário */
+  box-sizing: border-box;
+  flex-grow: 1; /* Permite que este elemento ocupe o espaço disponível no MainLayout */
 }
+
 
 @media (max-width: 768px) {
-    .login-container {
-        width: 100%;
-        margin: 20px;
-    }
-    .form-section {
-        padding: 20px;
-    }
+  .login-container {
+    width: 100%;
+    margin: 20px; /* Margem para telas pequenas */
+  }
+  .form-section {
+    padding: 20px;
+  }
 }
 
-.form-section button:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
-
-
+/* O elemento 'main' dentro do Login.jsx precisa ser ajustado */
+/* Ele não deve ter um padding fixo muito grande se o Header já estiver no MainLayout */
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    padding: 20px; /* Espaçamento interno para telas menores */
-    padding: 150px;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Reduza o padding ou remova se o .login-container tiver margin/padding adequado */
+  padding: 0px 0px; /* Exemplo: remover padding vertical, deixar horizontal opcional */
+  width: 100%; /* Garantir que o main ocupa toda a largura */
+  flex-grow: 1; /* Permite que o main preencha o espaço vertical dentro do .login-page */
 }
 
 .login-container {
-    display: flex;
-    width: 850px; /* Largura ajustada */
-    max-width: 90%; /* Para maior responsividade */
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin: 0 auto; /* Garantir centralização horizontal */
-    margin-bottom: 60px;
-    margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  width: 850px;
+  max-width: 90%;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 60px auto; /* Mantém a margem e auto para centralizar */
 }
 
 .form-section {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column; /* Certifica-se de que os itens se alinham verticalmente */
-    justify-content: center;
-    background-color: white;
-    width: 100%; /* Garante que o formulário ocupe toda a largura disponível */
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  width: 100%;
 }
 
 .form-section h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 35px;
-    margin-bottom: 30px;
-    color: var(--purple);
-    
+  font-family: 'Oswald', sans-serif;
+  font-size: 35px;
+  margin-bottom: 30px;
+  color: var(--purple);
 }
 
 .form-section input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 1rem;
-   
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
 }
-
-.form-section a {
-    text-decoration: none;
-    color: #aaa;
-    font-size: 0.9rem;
-    margin-bottom: 15px; /* Espaço entre o link e o botão */
-    display: block; /* Garante que o link ocupe a largura disponível e crie um novo bloco */
-}
-
- .form-section a #create{
-    text-decoration: none;
-    color: #aaa;
-    font-size: 0.9rem;
-    margin-bottom: 15px; /* Espaço entre o link e o botão */
-    display: block; 
-}
-
-.form-section a:hover {
-    color: var(--purple);
-}
-
-
-.form-section a:last-of-type { /*chama on ultimo tipo*/
-    text-align: center; /* Centraliza o texto */
-    display: block; /* Garante que o link se comporte como um bloco */
-    margin-top: 50px; /* Espaço entre o botão e o link */
-    font-size: 0.9rem; /* Tamanho de fonte apropriado */
-    color: #aaa /* Cor do texto */
-}
-
-.form-section a:last-of-type span {
-    font-weight: bold; /* Destaca o texto "Crie sua conta" */
-    color: var(--purple); /* Cor diferente para destacar */
-}
-
-.form-section a:last-of-type:hover {
-    text-decoration: underline; /* Efeito visual ao passar o mouse */
-}
-
 
 .form-section button {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--purple);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 10px; /* Espaço entre o link e o botão */
+  width: 100%;
+  padding: 10px;
+  background-color: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
 }
 
 .form-section button:hover {
-    background-color: var(--babyBlue);
+  background-color: var(--babyBlue);
 }
 
+.form-section button:focus {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+}
 
 .password-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .password-container input {
-    width: 100%;
-    padding-right: 40px; /* Espaço para o ícone */
-  }
-  
-  .eye-icon {
-    position: absolute;
-    top: 40%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: #aaa;
-  }
-  
-  .eye-icon:hover {
-    color: #333;
-  }
-  
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+.eye-icon:hover {
+  color: #333;
+}
+
+.forgot-link {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.forgot-link:hover {
+  color: var(--purple);
+}
+
+.register-link {
+  text-align: center;
+  display: block;
+  margin-top: 50px;
+  font-size: 0.9rem;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.register-link span {
+  font-weight: bold;
+  color: var(--purple);
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}

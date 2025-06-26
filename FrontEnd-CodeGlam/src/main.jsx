@@ -1,27 +1,36 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Header from './components/layout/Header'
-import Footer from './components/layout/Footer'
-import Home from './components/pages/Home' 
-import Login from './components/pages/Login'
-import Register from './components/pages/Register'
-import Planos from './components/pages/Planos'; 
-import styles from './Main.module.css' 
+// src/main.jsx
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// Importe todos os seus componentes de página
+import Home from './components/pages/Home';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
+import Planos from './components/pages/Planos';
+import ForgotPassword from './components/pages/ForgotPassword';
+import ResetPassword from './components/pages/ResetPassword';
+
+import MainLayout from './components/layout/MainLayout';
+
+import mainStyles from './Main.module.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <div className={styles.main}> 
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} /> 
-          <Route path="/login" element={<Login />} /> 
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/planos" element={<Planos />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/planos" element={<Planos />} /> 
-        </Routes>
-        <Footer />
-      </div>
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+
+        </Route>
+
+        <Route path="/forgot-password/:userId/:token" element={<ResetPassword />} />
+
+      </Routes>
     </BrowserRouter>
   </StrictMode>
-)
+);

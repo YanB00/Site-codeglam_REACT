@@ -15,7 +15,6 @@
 }
 
   .register-page {
-    background-color: rgb(245, 245, 243);
     overflow-x: hidden;
     margin: 0;
     background-image: url('./img/Untitled\ design.png');
@@ -24,7 +23,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+    min-height: 100vh; 
   }
   
   .register-container {
@@ -32,7 +31,6 @@
     flex-direction: column;
     width: 700px;
     max-width: 60%;
-    background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     margin: 60px auto;
@@ -128,7 +126,7 @@
   
   .eye-icon {
     position: absolute;
-    top: 40%;
+    top: 35%;
     right: 14px;
     transform: translateY(-50%);
     cursor: pointer;
@@ -168,7 +166,9 @@
     margin: 0;
   }
   
-  .login-link {
+  .login-link,
+  .forgot-link,
+  .register-link {
     display: block;
     text-align: center;
     margin-top: 20px;
@@ -177,11 +177,15 @@
     text-decoration: none;
   }
   
-  .login-link span {
+  .login-link,
+  .forgot-link span,
+  .register-link {
     color: var(--purple);
   }
   
-  .login-link:hover span {
+  .login-link:hover span,
+  .forgot-link:hover span,
+  .register-link:hover span {
     text-decoration: underline;
   }
   

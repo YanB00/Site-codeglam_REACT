@@ -109,7 +109,7 @@ const Register = () => {
     <div className={style["register-page"]}>
       <main className={style["register-container"]}>
         <div className={style["form-section"]}>
-          <form onSubmit={submit} key={formKey}> {/* Adicione onSubmit ao formulário */}
+          <form onSubmit={submit} key={formKey}> 
             <h1>Registrar-se</h1>
 
             <label htmlFor="nome">Nome completo</label>
@@ -126,7 +126,7 @@ const Register = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                name="senha" // Corrigido para 'senha' para corresponder ao backend
+                name="senha" 
                 placeholder="Senha (pelo menos 10 caracteres)"
                 minLength="10"
                 required

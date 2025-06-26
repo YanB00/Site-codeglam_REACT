@@ -3,6 +3,8 @@ import Header from "./components/layout/Header";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Planos from './components/pages/Planos'; 
+import ForgotPassword from './components/pages/ForgotPassword';
+import ResetPassword from './components/pages/ResetPassword'
 import Main from "./main";
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Main />} /> 
                 <Route path="/login" element={<Login />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/forgot-password/:userId/:token" element={<ResetPassword />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/planos" element={<Planos />} /> 
             </Routes>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from './Login.module.css';
+import style from './Register.module.css';
 import { Link, useNavigate } from 'react-router-dom'; 
 
 const Login = () => {
@@ -53,8 +53,8 @@ const Login = () => {
   };
 
   return (
-    <div className={style['login-page']}> 
-      <main className={style['login-container']}>
+    <div className={style['register-page']}> 
+      <main className={style['register-container']}>
         <div className={style['form-section']}>
           <form  onSubmit={handleSubmit}>
             <h1>Login</h1>
@@ -83,9 +83,11 @@ const Login = () => {
               </span>
             </div>
 
-            <a href="#">Esqueceu sua senha?</a>
+            <Link to="/forgot-password" className={style['forgot-link']}>
+              Esqueceu sua senha?
+            </Link>
             <button type="submit">Entrar</button>
-            <Link to="/register" className={style['register-link']}> {/* Added a class for styling */}
+            <Link to="/register" className={style['register-link']}> 
               Novo aqui? <span>Crie sua conta</span>
             </Link>
           </form>

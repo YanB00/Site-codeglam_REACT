@@ -1,7 +1,7 @@
-import styles from "./Features2.module.css"; // Se estiver usando CSS Modules
+import styles from "./Features2.module.css"; 
 
 const Features2 = () => (
-  <div id="features2" className={styles.body3}> {/* ID atualizado aqui */}
+  <div id="features2" className={styles.body3}> 
     <img
       src="/img/hairdresser team-pana.svg"
       alt="Hairdresser"
